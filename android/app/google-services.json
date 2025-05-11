@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "344261543899",
+    "project_id": "reactnativeinstaapp",
+    "storage_bucket": "reactnativeinstaapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344261543899:android:dd8ab864c562de6390c9fe",
+        "android_client_info": {
+          "package_name": "com.reactnativeinstaapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfaQ8dIIJ9BlB9bv3x7csAxgWN5dGAvck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

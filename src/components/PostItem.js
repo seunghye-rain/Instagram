@@ -3,9 +3,27 @@ import React, {useState} from 'react';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionic from 'react-native-vector-icons/Ionicons';
+import PushNotification from 'react-native-push-notification';
+import Home from '../screens/Home';
 
 const PostItem = ({data}) => {
   const [like, setLike] = useState(data.isLiked);
+
+  const handleNotification = title => {
+    PushNotification.getChannels(function (channel_ids) {
+      console.log(channel_ids); //[channel_id__1]
+    });
+
+    PushNotification.cancelAllLocalNotifications(); // 알림 하나만 뜰 수 있도록 지우기
+
+    PushNotification.localNotification({
+      channelId: 'insta-channel',
+      title: `${title}를 클릭했습니다.`,
+      message: `메시지 입니다.`,
+      color: 'red',
+      bigText: 'My Big Text',
+    });
+  };
 
   return (
     <View
@@ -22,14 +40,21 @@ const PostItem = ({data}) => {
           padding: 10,
         }}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Image
-            source={data.postPersonImage}
-            style={{
-              width: 40,
-              height: 40,
-              borderRadius: 100,
-            }}
-          />
+          <TouchableOpacity onPress={() => handleNotification(data.postTitle)}>
+            <Image
+              source={data.postPersonImage}
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 100,
+              }}
+            />
+          </TouchableOpacity>
+          <View style={{padding: 5}}>
+            <Text style={{fontSize: 15, fontWeight: 'bold'}}>
+              {data.postTitle}
+            </Text>
+          </View>
           <View style={{paddingLeft: 5}}>
             <Text style={{fontSize: 15, fontWeight: 'bold'}}>
               {data.postTitle}
